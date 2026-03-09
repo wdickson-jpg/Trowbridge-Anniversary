@@ -59,7 +59,7 @@ body {
 
 .ribbon-h {
   position: absolute;
-  top: 30%;
+  top: 18%;
   left: 0;
   right: 0;
   height: 38px;
@@ -71,7 +71,7 @@ body {
 
 .ribbon-v {
   position: absolute;
-  left: 72%;
+  left: 85%;
   top: 0;
   bottom: 0;
   width: 38px;
@@ -99,8 +99,8 @@ body {
 
 .bow-svg {
   position: absolute;
-  top: 30%;
-  left: 72%;
+  top: 18%;
+  left: 85%;
   transform: translate(-50%, -50%);
   width: clamp(180px, 22vw, 260px);
   height: auto;
@@ -452,6 +452,18 @@ section { position: relative; }
   color: var(--navy);
 }
 
+.timeline-item.stewardship-event::before {
+  background: var(--sage);
+  border-color: var(--sage);
+  width: 15px;
+  height: 15px;
+  box-shadow: 0 0 0 3px rgba(74,93,74,0.2);
+}
+
+.timeline-item.stewardship-event .tl-year {
+  color: var(--sage);
+}
+
 .timeline-left {
   text-align: right;
   padding-right: 2rem;
@@ -497,9 +509,38 @@ section { position: relative; }
   margin-bottom: 0.5rem;
 }
 
+.tl-image {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 3px;
+  filter: sepia(20%) contrast(1.05);
+  opacity: 0.7;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+  border: 1px solid var(--light-gray);
+}
+
+.tl-image:hover {
+  opacity: 1;
+  filter: sepia(0%);
+}
+
+.tl-image-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--warm-gray);
+  margin-top: 0.3rem;
+  opacity: 0.7;
+}
+
+.timeline-item:nth-child(even) .tl-image { margin-left: auto; }
+.timeline-item:nth-child(odd) .tl-image { margin-left: auto; }
+
 .tl-tag.house { background: var(--gold-light); color: var(--navy-deep); }
 .tl-tag.city { background: var(--navy); color: #fff; }
-.tl-tag.stewardship { background: var(--sage); color: #fff; }
+.tl-tag.stewardship { background: var(--sage); color: #fff; display: inline-block; font-weight: 600; padding: 0.25em 0.8em; font-size: 0.65rem; }
 
 /* ========== STEWARDSHIP ========== */
 .stewardship {
@@ -714,6 +755,27 @@ section { position: relative; }
   cursor: pointer;
 }
 
+.gallery-item::after {
+  content: '⤢';
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,15,26,0.6);
+  color: var(--gold-light);
+  font-size: 0.9rem;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.gallery-item:hover::after { opacity: 1; }
+
 .gallery-item img {
   width: 100%;
   height: 100%;
@@ -758,6 +820,90 @@ section { position: relative; }
   color: var(--gold-light);
   font-style: italic;
 }
+
+/* ========== LIGHTBOX ========== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,15,26,0.95);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: lbFadeIn 0.3s ease;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox-img {
+  max-width: 85vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border: 2px solid rgba(200,164,78,0.3);
+  cursor: default;
+  animation: lbZoomIn 0.3s ease;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--gold-light);
+  text-align: center;
+  max-width: 500px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  transition: color 0.2s;
+  z-index: 10000;
+}
+
+.lightbox-close:hover { color: var(--gold); }
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 1rem;
+  transition: color 0.2s;
+  z-index: 10000;
+}
+
+.lightbox-nav:hover { color: var(--gold); }
+.lightbox-prev { left: 1rem; }
+.lightbox-next { right: 1rem; }
+
+.lightbox-counter {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.15em;
+}
+
+@keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lbZoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 /* ========== FOOTER ========== */
 .footer {
@@ -952,46 +1098,84 @@ section { position: relative; }
   <div class="bow-wrapper">
     <div class="ribbon-h"></div>
     <div class="ribbon-v"></div>
-    <svg class="bow-svg" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
-      <!-- Left loop -->
-      <path d="M150,110 C140,100 80,30 50,45 C20,60 30,95 60,105 C90,115 140,110 150,110Z" fill="url(#bowGold1)" stroke="#9a7a2e" stroke-width="1"/>
-      <path d="M150,110 C140,115 80,140 55,125 C25,108 40,78 65,75 C95,72 140,105 150,110Z" fill="url(#bowGold2)" stroke="#9a7a2e" stroke-width="1"/>
-      <!-- Right loop -->
-      <path d="M150,110 C160,100 220,30 250,45 C280,60 270,95 240,105 C210,115 160,110 150,110Z" fill="url(#bowGold3)" stroke="#9a7a2e" stroke-width="1"/>
-      <path d="M150,110 C160,115 220,140 245,125 C275,108 260,78 235,75 C205,72 160,105 150,110Z" fill="url(#bowGold2)" stroke="#9a7a2e" stroke-width="1"/>
-      <!-- Tails -->
-      <path d="M140,115 C130,135 115,180 100,210 L115,190 C120,175 130,145 145,120Z" fill="url(#bowGold4)" stroke="#9a7a2e" stroke-width="0.8"/>
-      <path d="M160,115 C170,135 185,180 200,210 L185,190 C180,175 170,145 155,120Z" fill="url(#bowGold4)" stroke="#9a7a2e" stroke-width="0.8"/>
-      <!-- Center knot -->
-      <ellipse cx="150" cy="110" rx="18" ry="14" fill="url(#bowGold5)" stroke="#9a7a2e" stroke-width="1"/>
-      <ellipse cx="150" cy="108" rx="12" ry="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-      <!-- Gradients -->
+    <svg class="bow-svg" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bowGold1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#e8d5a0"/>
-          <stop offset="40%" stop-color="#c8a44e"/>
+          <stop offset="0%" stop-color="#f0e0b0"/>
+          <stop offset="30%" stop-color="#d4a94c"/>
+          <stop offset="70%" stop-color="#b8912e"/>
           <stop offset="100%" stop-color="#9a7a2e"/>
         </linearGradient>
-        <linearGradient id="bowGold2" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#9a7a2e"/>
-          <stop offset="50%" stop-color="#c8a44e"/>
-          <stop offset="100%" stop-color="#d4b060"/>
-        </linearGradient>
-        <linearGradient id="bowGold3" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#e8d5a0"/>
-          <stop offset="40%" stop-color="#c8a44e"/>
+        <linearGradient id="bowGold2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f0e0b0"/>
+          <stop offset="30%" stop-color="#d4a94c"/>
+          <stop offset="70%" stop-color="#b8912e"/>
           <stop offset="100%" stop-color="#9a7a2e"/>
         </linearGradient>
-        <linearGradient id="bowGold4" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#c8a44e"/>
+        <linearGradient id="bowGold3" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#8a6a1e"/>
+          <stop offset="40%" stop-color="#c8a44e"/>
+          <stop offset="100%" stop-color="#e8d5a0"/>
+        </linearGradient>
+        <linearGradient id="bowGold4" x1="50%" y1="0%" x2="50%" y2="100%">
+          <stop offset="0%" stop-color="#d4a94c"/>
+          <stop offset="100%" stop-color="#7a5a10"/>
+        </linearGradient>
+        <radialGradient id="bowGold5" cx="45%" cy="35%">
+          <stop offset="0%" stop-color="#f5eacc"/>
+          <stop offset="40%" stop-color="#d4a94c"/>
           <stop offset="100%" stop-color="#8a6a1e"/>
-        </linearGradient>
-        <radialGradient id="bowGold5" cx="45%" cy="40%">
-          <stop offset="0%" stop-color="#e8d5a0"/>
-          <stop offset="60%" stop-color="#c8a44e"/>
-          <stop offset="100%" stop-color="#9a7a2e"/>
         </radialGradient>
+        <linearGradient id="bowGold6" x1="0%" y1="50%" x2="100%" y2="50%">
+          <stop offset="0%" stop-color="#c8a44e"/>
+          <stop offset="50%" stop-color="#e8d5a0"/>
+          <stop offset="100%" stop-color="#c8a44e"/>
+        </linearGradient>
       </defs>
+      <!-- LEFT TAIL with ornate V-notch end -->
+      <path d="M136,138 C122,158 100,192 85,232 L78,218 C90,185 108,155 132,132Z" fill="url(#bowGold4)" stroke="#8a6a1e" stroke-width="0.5" opacity="0.9"/>
+      <path d="M132,138 C116,162 92,198 76,240 L70,226 C82,192 98,158 128,132Z" fill="url(#bowGold3)" stroke="#8a6a1e" stroke-width="0.5" opacity="0.7"/>
+      <!-- RIGHT TAIL with ornate V-notch end -->
+      <path d="M164,138 C178,158 200,192 215,232 L222,218 C210,185 192,155 168,132Z" fill="url(#bowGold4)" stroke="#8a6a1e" stroke-width="0.5" opacity="0.9"/>
+      <path d="M168,138 C184,162 208,198 224,240 L230,226 C218,192 202,158 172,132Z" fill="url(#bowGold3)" stroke="#8a6a1e" stroke-width="0.5" opacity="0.7"/>
+      <!-- BACK LAYER: Large round left loop -->
+      <path d="M148,124 C138,112 100,60 62,58 C38,56 30,78 40,96 C52,118 100,128 148,126Z" fill="url(#bowGold3)" stroke="#9a7a2e" stroke-width="0.6" opacity="0.6"/>
+      <!-- BACK LAYER: Large round right loop -->
+      <path d="M152,124 C162,112 200,60 238,58 C262,56 270,78 260,96 C248,118 200,128 152,126Z" fill="url(#bowGold3)" stroke="#9a7a2e" stroke-width="0.6" opacity="0.6"/>
+      <!-- BACK LAYER: Lower-left puff -->
+      <path d="M145,130 C128,134 78,140 58,124 C42,110 52,90 72,92 C96,94 132,118 145,128Z" fill="url(#bowGold3)" stroke="#9a7a2e" stroke-width="0.5" opacity="0.55"/>
+      <!-- BACK LAYER: Lower-right puff -->
+      <path d="M155,130 C172,134 222,140 242,124 C258,110 248,90 228,92 C204,94 168,118 155,128Z" fill="url(#bowGold3)" stroke="#9a7a2e" stroke-width="0.5" opacity="0.55"/>
+      <!-- MID LAYER: Left upper round loop -->
+      <path d="M148,122 C136,106 96,52 58,48 C32,46 24,72 36,92 C52,116 112,128 148,124Z" fill="url(#bowGold1)" stroke="#9a7a2e" stroke-width="0.8"/>
+      <!-- Highlight crease on left loop -->
+      <path d="M130,100 C118,86 90,62 70,60 C56,58 50,70 58,82 C68,96 100,108 128,110" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- MID LAYER: Right upper round loop -->
+      <path d="M152,122 C164,106 204,52 242,48 C268,46 276,72 264,92 C248,116 188,128 152,124Z" fill="url(#bowGold2)" stroke="#9a7a2e" stroke-width="0.8"/>
+      <!-- Highlight crease on right loop -->
+      <path d="M170,100 C182,86 210,62 230,60 C244,58 250,70 242,82 C232,96 200,108 172,110" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- FRONT LAYER: Left lower round puff -->
+      <path d="M146,130 C130,136 82,148 60,132 C42,118 48,96 68,94 C92,92 134,114 146,126Z" fill="url(#bowGold1)" stroke="#9a7a2e" stroke-width="0.7"/>
+      <!-- FRONT LAYER: Right lower round puff -->
+      <path d="M154,130 C170,136 218,148 240,132 C258,118 252,96 232,94 C208,92 166,114 154,126Z" fill="url(#bowGold2)" stroke="#9a7a2e" stroke-width="0.7"/>
+      <!-- FRONT LAYER: Small left top accent loop -->
+      <path d="M148,120 C140,108 112,72 88,68 C72,66 66,80 74,92 C84,106 128,120 148,122Z" fill="url(#bowGold6)" stroke="#9a7a2e" stroke-width="0.5" opacity="0.55"/>
+      <!-- FRONT LAYER: Small right top accent loop -->
+      <path d="M152,120 C160,108 188,72 212,68 C228,66 234,80 226,92 C216,106 172,120 152,122Z" fill="url(#bowGold6)" stroke="#9a7a2e" stroke-width="0.5" opacity="0.55"/>
+      <!-- CENTER KNOT — wide gathered wrap -->
+      <ellipse cx="150" cy="126" rx="24" ry="14" fill="url(#bowGold5)" stroke="#8a6a1e" stroke-width="1.2"/>
+      <!-- Vertical gathering folds in knot -->
+      <path d="M134,119 C136,126 134,132" fill="none" stroke="rgba(100,70,15,0.3)" stroke-width="1.2"/>
+      <path d="M140,117 C141,126 140,135" fill="none" stroke="rgba(100,70,15,0.2)" stroke-width="1"/>
+      <path d="M146,116 C146,126 146,136" fill="none" stroke="rgba(100,70,15,0.15)" stroke-width="0.8"/>
+      <path d="M150,115 C150,126 150,137" fill="none" stroke="rgba(100,70,15,0.12)" stroke-width="0.7"/>
+      <path d="M154,116 C154,126 154,136" fill="none" stroke="rgba(100,70,15,0.15)" stroke-width="0.8"/>
+      <path d="M160,117 C159,126 160,135" fill="none" stroke="rgba(100,70,15,0.2)" stroke-width="1"/>
+      <path d="M166,119 C164,126 166,132" fill="none" stroke="rgba(100,70,15,0.3)" stroke-width="1.2"/>
+      <!-- Knot top highlight -->
+      <path d="M138,120 C142,117 148,116 154,116 C160,117 164,119" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.8" stroke-linecap="round"/>
+      <!-- Knot bottom shadow -->
+      <path d="M138,132 C142,135 148,136 154,136 C160,135 164,132" fill="none" stroke="rgba(80,55,10,0.15)" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
   </div>
   <div class="hero-content">
@@ -1093,12 +1277,12 @@ section { position: relative; }
           <div class="tl-title">The Great Fire of Detroit</div>
           <div class="tl-desc">Nearly the entire city burns to the ground. Judge Augustus Woodward begins the replanning of Detroit with wide boulevards and a new vision.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28763/sidebar_slim_Trowbridge-House_Before-scale-back_unknown_Burton-Edit.jpg" alt="Early Detroit" /><div class="tl-image-caption">Detroit before the modern era</div></div>
       </div>
 
       <!-- 1818 -->
       <div class="timeline-item detroit-event reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="East Jefferson Avenue" /><div class="tl-image-caption">East Jefferson Avenue corridor</div></div>
         <div class="timeline-right">
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1818</div>
@@ -1115,12 +1299,12 @@ section { position: relative; }
           <div class="tl-title">Trowbridge Arrives in Detroit</div>
           <div class="tl-desc">Nineteen-year-old Charles C. Trowbridge arrives in Detroit to work under Major Thomas Rowland as Deputy U.S. Marshal. The population of Detroit is roughly 1,500 people.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="The frontier era" /><div class="tl-image-caption">Federal-era architecture</div></div>
       </div>
 
       <!-- 1820 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Michigan_1718.jpg/440px-Michigan_1718.jpg" alt="Early Michigan Territory" /><div class="tl-image-caption">The Michigan Territory frontier</div></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1820</div>
@@ -1137,12 +1321,12 @@ section { position: relative; }
           <div class="tl-title">President, Bank of Michigan</div>
           <div class="tl-desc">Trowbridge is appointed cashier (and later president) of the Bank of Michigan, one of the territory's most important financial institutions. He purchases the farmland that will become the site of his famous house.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/First_State_Capitol_Michigan.jpg/440px-First_State_Capitol_Michigan.jpg" alt="Early Detroit government" /><div class="tl-image-caption">Detroit in the territorial era</div></div>
       </div>
 
       <!-- 1826 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28763/sidebar_slim_Trowbridge-House_Before-scale-back_unknown_Burton-Edit.jpg" alt="Original Trowbridge House" /><div class="tl-image-caption">The original five-bay house</div></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1826</div>
@@ -1159,12 +1343,12 @@ section { position: relative; }
           <div class="tl-title">Mayor During Cholera Epidemic</div>
           <div class="tl-desc">After serving as alderman in 1833, Trowbridge is elected mayor of Detroit and serves through a devastating cholera epidemic before resigning. He runs for governor in 1837 as the Whig candidate, narrowly losing to Stevens T. Mason.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28763/sidebar_slim_Trowbridge-House_Before-scale-back_unknown_Burton-Edit.jpg" alt="Detroit in the 1830s" /><div class="tl-image-caption">The house in Trowbridge's era</div></div>
       </div>
 
       <!-- 1837 -->
       <div class="timeline-item detroit-event reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Stevens_T_Mason_-_Brady-Handy.jpg/440px-Stevens_T_Mason_-_Brady-Handy.jpg" alt="Stevens T. Mason" /><div class="tl-image-caption">Gov. Stevens T. Mason</div></div>
         <div class="timeline-right">
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1837</div>
@@ -1181,12 +1365,12 @@ section { position: relative; }
           <div class="tl-title">Brick Addition</div>
           <div class="tl-desc">Trowbridge adds a brick addition to the rear of the house and constructs a stable behind the property. He continues to lead the Michigan State Bank and takes the helm of the Detroit & Milwaukee Railway.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Michigan_Central_Railroad_Depot_Detroit.jpg/440px-Michigan_Central_Railroad_Depot_Detroit.jpg" alt="Michigan Central Railroad" /><div class="tl-image-caption">The railroad era in Detroit</div></div>
       </div>
 
       <!-- 1883 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="Trowbridge House" /><div class="tl-image-caption">1380 East Jefferson Avenue</div></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1883</div>
@@ -1203,12 +1387,12 @@ section { position: relative; }
           <div class="tl-title">House Downsized & Updated</div>
           <div class="tl-desc">The eastern two bays are removed, reducing the house from five bays to three. Victorian elements are added, including the distinctive front bay window with fish-scale shingled pediment. An apartment house is built on the removed section's site.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="Victorian elements added" /><div class="tl-image-caption">The Victorian facade today</div></div>
       </div>
 
       <!-- 1896 -->
       <div class="timeline-item detroit-event reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/StateLibQld_1_139032_Quadricycle_built_by_Henry_Ford_in_1896.jpg/440px-StateLibQld_1_139032_Quadricycle_built_by_Henry_Ford_in_1896.jpg" alt="Ford Quadricycle" /><div class="tl-image-caption">Ford's Quadricycle, 1896</div></div>
         <div class="timeline-right">
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1896</div>
@@ -1225,12 +1409,12 @@ section { position: relative; }
           <div class="tl-title">Ford Motor Company Founded</div>
           <div class="tl-desc">Henry Ford incorporates the Ford Motor Company. Detroit begins its transformation into the Motor City, attracting workers and capital from around the world.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="Detroit enters the auto age" /><div class="tl-image-caption">Jefferson Ave. in the auto era</div></div>
       </div>
 
       <!-- 1929 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Penobscot_Building.jpg/260px-Penobscot_Building.jpg" alt="1920s Detroit skyline" /><div class="tl-image-caption">Detroit booms in the 1920s</div></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1929</div>
@@ -1247,12 +1431,12 @@ section { position: relative; }
           <div class="tl-title">Converted to Rooming House</div>
           <div class="tl-desc">During the Great Depression, the Trowbridge family converts the house to a rooming house.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Detroit_Skyline_1929.jpg/440px-Detroit_Skyline_1929.jpg" alt="Detroit 1930s" /><div class="tl-image-caption">Detroit weathers the Depression</div></div>
       </div>
 
       <!-- 1942 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Woodward_Ave_Detroit.jpg/440px-Woodward_Ave_Detroit.jpg" alt="Woodward Avenue mid-century" /><div class="tl-image-caption">Mid-century Woodward Avenue</div></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1942</div>
@@ -1269,12 +1453,12 @@ section { position: relative; }
           <div class="tl-title">Michigan State Historic Site</div>
           <div class="tl-desc">The Trowbridge House is designated a Michigan State Historic Site, recognizing its importance as Detroit's oldest surviving building.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28763/sidebar_slim_Trowbridge-House_Before-scale-back_unknown_Burton-Edit.jpg" alt="Historic landmark" /><div class="tl-image-caption">Officially recognized as historic</div></div>
       </div>
 
       <!-- 1976 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
+        <div class="timeline-left"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="Trowbridge House on the National Register" /><div class="tl-image-caption">Recognized for national significance</div></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1976</div>
@@ -1291,14 +1475,14 @@ section { position: relative; }
           <div class="tl-title">Renaissance Center Opens</div>
           <div class="tl-desc">The Renaissance Center opens just blocks from the Trowbridge House — a bold statement of faith in Detroit's future along the riverfront corridor.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="Jefferson Avenue revitalized" /><div class="tl-image-caption">The enduring Jefferson corridor</div></div>
       </div>
 
       <!-- 1981 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
+      <div class="timeline-item stewardship-event reveal">
+        <div class="timeline-left"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="Trowbridge House acquired by Dickson" /><div class="tl-image-caption">A new chapter begins</div></div>
         <div class="timeline-right">
-          <span class="tl-tag stewardship">Stewardship</span>
+          <span class="tl-tag stewardship">&#9670; Stewardship</span>
           <div class="tl-year">1981</div>
           <div class="tl-title" style="color: var(--sage); font-size: 1.15rem;">Stanley Dickson Acquires the House</div>
           <div class="tl-desc">Stanley B. Dickson Jr. acquires the Trowbridge House and transforms it into a professional office — years before Detroit's modern revival had a heartbeat. He founds Trowbridge Law Firm, P.C. and begins decades of careful stewardship.</div>
@@ -1306,25 +1490,14 @@ section { position: relative; }
       </div>
 
       <!-- 1993 -->
-      <div class="timeline-item reveal">
+      <div class="timeline-item stewardship-event reveal">
         <div class="timeline-left">
-          <span class="tl-tag stewardship">Stewardship</span>
+          <span class="tl-tag stewardship">&#9670; Stewardship</span>
           <div class="tl-year">1993</div>
           <div class="tl-title">Bosquett Building Acquired</div>
           <div class="tl-desc">Needing more space, Dickson purchases the neighboring 1899 Bosquett Building and connects the two structures via a second-floor hallway, expanding the campus while preserving the Trowbridge House's character.</div>
         </div>
-        <div class="timeline-right"></div>
-      </div>
-
-      <!-- 2005 -->
-      <div class="timeline-item reveal">
-        <div class="timeline-left"></div>
-        <div class="timeline-right">
-          <span class="tl-tag stewardship">Stewardship</span>
-          <div class="tl-year">2005</div>
-          <div class="tl-title">Marketplace Homes Founded</div>
-          <div class="tl-desc">Marketplace Homes is founded in the Trowbridge House — a national brokerage and property management company that would grow to manage thousands of homes across 35+ states. The entrepreneurial spirit that Charles Trowbridge carried finds new expression.</div>
-        </div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="The expanded campus" /><div class="tl-image-caption">The Trowbridge House campus today</div></div>
       </div>
 
       <!-- 2026 -->
@@ -1335,7 +1508,7 @@ section { position: relative; }
           <div class="tl-title" style="font-size: 1.25rem;">&#9733; Bicentennial</div>
           <div class="tl-desc">The Trowbridge House celebrates 200 years — still standing, still home to entrepreneurs, still the oldest building in Detroit. From a frontier home on farmland to the headquarters of multiple thriving businesses, the spirit of enterprise endures.</div>
         </div>
-        <div class="timeline-right"></div>
+        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="200 years of history" /><div class="tl-image-caption">Celebrating 200 years</div></div>
       </div>
 
     </div>
@@ -1548,9 +1721,20 @@ section { position: relative; }
   </div>
 </footer>
 
-<!-- ==================== SCROLL REVEAL ==================== -->
+<!-- ==================== LIGHTBOX ==================== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev">&#8249;</button>
+  <button class="lightbox-nav lightbox-next" id="lb-next">&#8250;</button>
+  <div class="lightbox-counter" id="lb-counter"></div>
+  <img class="lightbox-img" id="lb-img" src="" alt="" />
+  <div class="lightbox-caption" id="lb-caption"></div>
+</div>
+
+<!-- ==================== SCROLL REVEAL & LIGHTBOX ==================== -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1561,8 +1745,60 @@ document.addEventListener('DOMContentLoaded', () => {
     threshold: 0.1,
     rootMargin: '0px 0px -40px 0px'
   });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  const lbCounter = document.getElementById('lb-counter');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  let currentIndex = 0;
+
+  const images = Array.from(galleryItems).map(item => ({
+    src: item.querySelector('img').src,
+    alt: item.querySelector('img').alt,
+    caption: item.querySelector('.gallery-overlay span')?.textContent || ''
+  }));
+
+  function showImage(index) {
+    currentIndex = ((index % images.length) + images.length) % images.length;
+    lbImg.src = images[currentIndex].src;
+    lbImg.alt = images[currentIndex].alt;
+    lbCaption.textContent = images[currentIndex].caption;
+    lbCounter.textContent = (currentIndex + 1) + ' / ' + images.length;
+  }
+
+  function openLightbox(index) {
+    showImage(index);
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  galleryItems.forEach((item, i) => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => openLightbox(i));
+  });
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
+  document.getElementById('lb-next').addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+  });
 });
 </script>
 
