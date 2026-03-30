@@ -370,6 +370,17 @@ section { position: relative; }
   line-height: 1;
 }
 
+.bio-quote::after {
+  content: '\201D';
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  position: absolute;
+  bottom: -3.5rem;
+  right: 5%;
+  color: rgba(200,164,78,0.2);
+  line-height: 1;
+}
+
 .bio-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1207,11 +1218,7 @@ section { position: relative; }
 }
 
 .register-badge::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
+  display: none;
 }
 
 /* ========== ORNAMENTAL DIVIDER ========== */
@@ -1361,7 +1368,7 @@ section { position: relative; }
         <div class="body-text drop-cap">
           <p>In 1826, a nineteen-year-old from Albany, New York named Charles Christopher Trowbridge built the finest frame house in the Michigan Territory. He put it on open farmland along the River Road, well outside the city walls. Two hundred years later, his home at 1380 East Jefferson Avenue is still standing. It is the oldest building in Detroit.</p>
           <br>
-          <p>The house has outlasted cholera epidemics, world wars, the rise and fall of the auto industry, and Detroit's long reinvention. It was here before Michigan was a state. Entrepreneurs built it, entrepreneurs saved it, and entrepreneurs work in it today.</p>
+          <p>The house has outlasted cholera epidemics, world wars, the tumultuous auto industry, and Detroit's long reinvention. It was here before Michigan was a state. Entrepreneurs built it, entrepreneurs saved it, and entrepreneurs work in it today.</p>
         </div>
       </div>
     </div>
@@ -1412,14 +1419,14 @@ section { position: relative; }
     <div class="reveal">
       <div class="section-label">From the Collection</div>
       <h2 class="section-heading">Artifacts &amp; Heirlooms</h2>
-      <p class="body-text" style="margin-bottom: 2rem;">Original photographs, ledgers, and personal effects from the Trowbridge House — many still kept on site at 1380 East Jefferson Avenue.</p>
+      <p class="body-text" style="margin-bottom: 2rem;">Original photographs, ledgers, and personal effects from the Trowbridge House, many still kept on site at 1380 East Jefferson Avenue.</p>
     </div>
 
     <div class="carousel reveal" id="carousel">
       <div class="carousel-track" id="carousel-track">
         <div class="carousel-slide">
           <img src="./portrait.jpg" alt="Portrait of Charles C. Trowbridge" />
-          <div class="carousel-caption" style="color: var(--warm-gray);">Portrait of Charles C. Trowbridge — this painting hangs in the hallway of the house to this day</div>
+          <div class="carousel-caption" style="color: var(--warm-gray);">Portrait of Charles C. Trowbridge. This painting hangs in the hallway of the house to this day</div>
         </div>
         <div class="carousel-slide">
           <img src="./trowbridge-daguerreotype.jpg" alt="Daguerreotype of Charles C. Trowbridge" />
@@ -1427,7 +1434,7 @@ section { position: relative; }
         </div>
         <div class="carousel-slide">
           <img src="./trowbridge-closeup.jpg" alt="Daguerreotype close-up" />
-          <div class="carousel-caption" style="color: var(--warm-gray);">Close-up daguerreotype — one of the earliest photographs of a Detroit mayor</div>
+          <div class="carousel-caption" style="color: var(--warm-gray);">Close-up daguerreotype, one of the earliest photographs of a Detroit mayor</div>
         </div>
         <div class="carousel-slide">
           <img src="./daughter-daguerreotype.jpg" alt="Daguerreotype of Trowbridge child" />
@@ -1435,7 +1442,7 @@ section { position: relative; }
         </div>
         <div class="carousel-slide">
           <img src="./daguerreotype-pair.jpg" alt="Paired daguerreotypes" />
-          <div class="carousel-caption" style="color: var(--warm-gray);">Father and daughter — paired daguerreotypes from the Trowbridge family collection</div>
+          <div class="carousel-caption" style="color: var(--warm-gray);">Father and daughter: paired daguerreotypes from the Trowbridge family collection</div>
         </div>
         <div class="carousel-slide">
           <img src="./family-daguerreotype.jpg" alt="Trowbridge family daguerreotype" />
@@ -1447,7 +1454,7 @@ section { position: relative; }
         </div>
         <div class="carousel-slide">
           <img src="./inventory-signature.jpg" alt="Inventory book with Trowbridge signature" />
-          <div class="carousel-caption" style="color: var(--warm-gray);">Trowbridge's inventory book — signed in his own hand: "Charles C. Trowbridge"</div>
+          <div class="carousel-caption" style="color: var(--warm-gray);">Trowbridge's inventory book, signed in his own hand: "Charles C. Trowbridge"</div>
         </div>
         <div class="carousel-slide">
           <img src="./ledger-open.jpg" alt="Trowbridge account ledger" />
@@ -1463,15 +1470,15 @@ section { position: relative; }
         </div>
         <div class="carousel-slide">
           <img src="./detroit-directory.jpg" alt="1846 Directory of the City of Detroit" />
-          <div class="carousel-caption" style="color: var(--warm-gray);">Directory of the City of Detroit, 1846 — signed "C.C. Trowbridge" on the flyleaf</div>
+          <div class="carousel-caption" style="color: var(--warm-gray);">Directory of the City of Detroit, 1846, signed "C.C. Trowbridge" on the flyleaf</div>
         </div>
         <div class="carousel-slide">
           <img src="./newspaper-1859.jpg" alt="1859 Lansing State Republican" />
-          <div class="carousel-caption" style="color: var(--warm-gray);">Lansing State Republican, October 25, 1859 — bearing Trowbridge's name in print</div>
+          <div class="carousel-caption" style="color: var(--warm-gray);">Lansing State Republican, October 25, 1859, bearing Trowbridge's name in print</div>
         </div>
         <div class="carousel-slide">
           <img src="./historic-plaque.jpg" alt="National Register plaque" />
-          <div class="carousel-caption" style="color: var(--warm-gray);">National Register of Historic Places plaque — placed by the Daughters of the American Revolution, October 1979</div>
+          <div class="carousel-caption" style="color: var(--warm-gray);">National Register of Historic Places plaque, placed by the Daughters of the American Revolution, October 1979</div>
         </div>
       </div>
       <button class="carousel-btn carousel-prev" id="carousel-prev">&#8249;</button>
@@ -1488,7 +1495,7 @@ section { position: relative; }
     <div class="reveal">
       <div class="section-label">Two Centuries</div>
       <h2 class="section-heading">A Timeline of the Trowbridge House &amp; Detroit</h2>
-      <p class="body-text" style="margin-bottom: 2rem;">From frontier farmland to the modern Motor City — the milestones of a house, a family, and a city intertwined.</p>
+      <p class="body-text" style="margin-bottom: 2rem;">From frontier farmland to the modern Motor City: the milestones of a house, a family, and a city intertwined.</p>
     </div>
 
     <div class="timeline">
@@ -1555,7 +1562,7 @@ section { position: relative; }
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1826</div>
           <div class="tl-title" style="color: var(--gold-dark); font-size: 1.3rem;">&#9733; The House Is Built</div>
-          <div class="tl-desc">Trowbridge builds his home for $2,500 on the former Mullett Farm, a French land grant along the river — a French land grant to Charles Chauvin. Originally a five-bay-wide Federal structure in the Greek Revival style, it is immediately considered the finest frame house in the Michigan Territory. That same year, he marries Catherine Whipple Sibley.</div>
+          <div class="tl-desc">Trowbridge builds his home for $2,500 on the former Mullett Farm, a French land grant along the river. Originally a five-bay-wide Federal structure in the Greek Revival style, it is immediately considered the finest frame house in the Michigan Territory. That same year, he marries Catherine Whipple Sibley.</div>
         </div>
       </div>
 
@@ -1599,7 +1606,7 @@ section { position: relative; }
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1883</div>
           <div class="tl-title">Trowbridge Passes Away</div>
-          <div class="tl-desc">Charles C. Trowbridge dies of pneumonia on April 3, 1883 — after 57 years in the house he built and more than six decades as a pillar of Detroit. He and Catherine are buried at Elmwood Cemetery.</div>
+          <div class="tl-desc">Charles C. Trowbridge dies of pneumonia on April 3, 1883, after 57 years in the house he built and more than six decades as a pillar of Detroit. He and Catherine are buried at Elmwood Cemetery.</div>
         </div>
       </div>
 
@@ -1621,7 +1628,7 @@ section { position: relative; }
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1896</div>
           <div class="tl-title">Henry Ford's Quadricycle</div>
-          <div class="tl-desc">Henry Ford test-drives his first automobile — the Quadricycle — through the streets of Detroit, sparking the revolution that will define the city for the next century.</div>
+          <div class="tl-desc">Henry Ford test-drives his first automobile, the Quadricycle, through the streets of Detroit, sparking the revolution that will define the city for the next century.</div>
         </div>
       </div>
 
@@ -1697,7 +1704,7 @@ section { position: relative; }
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1977</div>
           <div class="tl-title">Renaissance Center Opens</div>
-          <div class="tl-desc">The Renaissance Center opens just blocks from the Trowbridge House — a bold statement of faith in Detroit's future along the riverfront corridor.</div>
+          <div class="tl-desc">The Renaissance Center opens just blocks from the Trowbridge House, a bold statement of faith in Detroit's future along the riverfront corridor.</div>
         </div>
         <div class="timeline-right"></div>
       </div>
@@ -1709,7 +1716,7 @@ section { position: relative; }
           <span class="tl-tag stewardship">&#9670; Stewardship</span>
           <div class="tl-year">1981</div>
           <div class="tl-title" style="color: var(--sage); font-size: 1.15rem;">Stanley Dickson Acquires the House</div>
-          <div class="tl-desc">Stanley B. Dickson Jr. acquires the Trowbridge House and transforms it into a professional office — years before Detroit's modern revival had a heartbeat. He founds Trowbridge Law Firm, P.C. and begins decades of careful stewardship.</div>
+          <div class="tl-desc">Stanley B. Dickson Jr. acquires the Trowbridge House and transforms it into a professional office, years before Detroit's modern revival had a heartbeat. He founds Trowbridge Law Firm, P.C. and begins decades of careful stewardship.</div>
         </div>
       </div>
 
@@ -1730,7 +1737,7 @@ section { position: relative; }
           <span class="tl-tag house" style="background: var(--gold); color: var(--navy-deep); font-weight: 700;">200th Anniversary</span>
           <div class="tl-year" style="font-size: 2rem; color: var(--gold-dark);">2026</div>
           <div class="tl-title" style="font-size: 1.25rem;">&#9733; Bicentennial</div>
-          <div class="tl-desc">The Trowbridge House celebrates 200 years — still standing, still home to entrepreneurs, still the oldest building in Detroit. From a frontier home on farmland to the headquarters of multiple thriving businesses, the spirit of enterprise endures.</div>
+          <div class="tl-desc">The Trowbridge House celebrates 200 years. Still standing, still home to entrepreneurs, still the oldest building in Detroit. From a frontier home on farmland to the headquarters of multiple thriving businesses, the spirit of enterprise endures.</div>
         </div>
         <div class="timeline-right"></div>
       </div>
@@ -1754,7 +1761,7 @@ section { position: relative; }
         </p>
         <br>
         <p class="body-text">
-          Today his sons William and Daniel work alongside him here. William runs Marketplace Homes, a national real estate brokerage and property management company. It is a family house, same as it was when Trowbridge built it.
+          Today his sons William and Daniel work alongside him here. It is a family house, same as it was when Trowbridge built it.
         </p>
       </div>
 
@@ -1764,17 +1771,7 @@ section { position: relative; }
             "The ambiance here is much different than that found in a glass office building. It still feels like a home."
           </p>
           <p style="font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; margin-bottom: 1.5rem;">— Stanley B. Dickson Jr.</p>
-          <div class="stewardship-businesses">
-            <h4>Businesses at the Trowbridge House</h4>
-            <ul class="biz-list">
-              <li>Trowbridge Law Firm</li>
-              <li>Dickson & Associates CPA</li>
-              <li>Marketplace Homes</li>
-              <li>Finance Michigan</li>
-              <li>Trowbridge Capital Partners</li>
-              <li>RBD Creative</li>
-            </ul>
-          </div>
+
         </div>
       </div>
     </div>
@@ -1795,7 +1792,7 @@ section { position: relative; }
       </div>
 
       <p class="body-text" style="text-align: center; margin: 0 auto;">
-        Trowbridge was an entrepreneur. That is the through-line of this whole story. He ran banks, built railroads, developed land, and did it all from this house on East Jefferson. Two hundred years later the Dickson family is doing the same thing from the same rooms. The work is different but the impulse is identical: see an opportunity, take the risk, build something that lasts.
+        Trowbridge was an entrepreneur. He ran banks, built railroads, developed land, and did it all from this house on East Jefferson. Two hundred years later the Dickson family is doing the same thing from the same rooms. The work is different but the impulse is identical: see an opportunity, take the risk, build something that lasts.
       </p>
     </div>
 
