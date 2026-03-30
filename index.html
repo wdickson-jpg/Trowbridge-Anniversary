@@ -401,12 +401,12 @@ section { position: relative; }
 
 /* ========== TIMELINE ========== */
 .timeline-section {
-  padding: 7rem 0;
+  padding: 5rem 0;
 }
 
 .timeline {
   position: relative;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .timeline::before {
@@ -424,8 +424,8 @@ section { position: relative; }
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
   align-items: start;
 }
 
@@ -478,24 +478,24 @@ section { position: relative; }
 
 .tl-year {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--gold-dark);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 
 .tl-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--ink);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.15rem;
 }
 
 .tl-desc {
   font-family: 'Libre Baskerville', serif;
-  font-size: 0.85rem;
-  line-height: 1.7;
+  font-size: 0.8rem;
+  line-height: 1.6;
   color: var(--warm-gray);
 }
 
@@ -886,8 +886,9 @@ section { position: relative; }
   max-width: 100%;
   max-height: 65vh;
   object-fit: contain;
-  border: 2px solid rgba(200,164,78,0.2);
-  background: rgba(0,0,0,0.3);
+  border: 2px solid rgba(200,164,78,0.3);
+  background: var(--navy-deep);
+  padding: 4px;
 }
 
 .carousel-caption {
@@ -905,12 +906,12 @@ section { position: relative; }
   position: absolute;
   top: 45%;
   transform: translateY(-50%);
-  background: rgba(200,164,78,0.15);
-  border: 1px solid rgba(200,164,78,0.3);
+  background: var(--navy-deep);
+  border: 2px solid var(--gold);
   color: var(--gold);
-  font-size: 2.5rem;
-  width: 50px;
-  height: 50px;
+  font-size: 2rem;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -919,15 +920,17 @@ section { position: relative; }
   border-radius: 50%;
   line-height: 1;
   padding-bottom: 3px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  z-index: 10;
 }
 
 .carousel-btn:hover {
-  background: rgba(200,164,78,0.3);
-  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--navy-deep);
 }
 
-.carousel-prev { left: -60px; }
-.carousel-next { right: -60px; }
+.carousel-prev { left: 1rem; }
+.carousel-next { right: 1rem; }
 
 .carousel-dots {
   display: flex;
@@ -940,8 +943,8 @@ section { position: relative; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(200,164,78,0.2);
-  border: 1px solid rgba(200,164,78,0.3);
+  background: rgba(200,164,78,0.25);
+  border: 1px solid var(--gold);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
@@ -1403,6 +1406,82 @@ section { position: relative; }
   </div>
 </section>
 
+<!-- ==================== GALLERY ==================== -->
+<section class="gallery-section section-parchment" style="padding: 6rem 0; background: var(--cream);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">From the Collection</div>
+      <h2 class="section-heading">Artifacts &amp; Heirlooms</h2>
+      <p class="body-text" style="margin-bottom: 2rem;">Original photographs, ledgers, and personal effects from the Trowbridge House — many still kept on site at 1380 East Jefferson Avenue.</p>
+    </div>
+
+    <div class="carousel reveal" id="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide">
+          <img src="./portrait.jpg" alt="Portrait of Charles C. Trowbridge" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Portrait of Charles C. Trowbridge — this painting hangs in the hallway of the house to this day</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./trowbridge-daguerreotype.jpg" alt="Daguerreotype of Charles C. Trowbridge" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Daguerreotype of Charles C. Trowbridge, c. 1850s</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./trowbridge-closeup.jpg" alt="Daguerreotype close-up" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Close-up daguerreotype — one of the earliest photographs of a Detroit mayor</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./daughter-daguerreotype.jpg" alt="Daguerreotype of Trowbridge child" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Daguerreotype of a Trowbridge child, c. 1850s</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./daguerreotype-pair.jpg" alt="Paired daguerreotypes" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Father and daughter — paired daguerreotypes from the Trowbridge family collection</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./family-daguerreotype.jpg" alt="Trowbridge family daguerreotype" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">The Trowbridge family, daguerreotype in gilt frame</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./family-oval.jpg" alt="Trowbridge family locket" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Trowbridge family portrait in original locket case</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./inventory-signature.jpg" alt="Inventory book with Trowbridge signature" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Trowbridge's inventory book — signed in his own hand: "Charles C. Trowbridge"</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./ledger-open.jpg" alt="Trowbridge account ledger" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Original account ledger with entries dating to the 1820s</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./ledger-shelf.jpg" alt="Trowbridge ledger on shelf" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">The same ledger, still kept at the house nearly 200 years later</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./account-books-spines.jpg" alt="Trowbridge account books" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Trowbridge's account book, personal ledger, and an 1846 Detroit city directory</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./detroit-directory.jpg" alt="1846 Directory of the City of Detroit" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Directory of the City of Detroit, 1846 — signed "C.C. Trowbridge" on the flyleaf</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./newspaper-1859.jpg" alt="1859 Lansing State Republican" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">Lansing State Republican, October 25, 1859 — bearing Trowbridge's name in print</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="./historic-plaque.jpg" alt="National Register plaque" />
+          <div class="carousel-caption" style="color: var(--warm-gray);">National Register of Historic Places plaque — placed by the Daughters of the American Revolution, October 1979</div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" id="carousel-prev">&#8249;</button>
+      <button class="carousel-btn carousel-next" id="carousel-next">&#8250;</button>
+      <div class="carousel-counter" id="carousel-counter" style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--warm-gray); letter-spacing: 0.1em;">1 / 14</div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ==================== TIMELINE ==================== -->
 <section class="timeline-section section-parchment">
   <div class="container">
@@ -1735,80 +1814,6 @@ section { position: relative; }
 </section>
 
 
-<!-- ==================== GALLERY ==================== -->
-<section class="gallery-section section-dark" style="padding: 6rem 0;">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">From the Collection</div>
-      <h2 class="section-heading" style="color:#fff;">Artifacts &amp; Heirlooms</h2>
-      <p class="body-text" style="margin-bottom: 2rem;">Original photographs, ledgers, and personal effects from the Trowbridge House — many still kept on site at 1380 East Jefferson Avenue.</p>
-    </div>
-
-    <div class="carousel reveal" id="carousel">
-      <div class="carousel-track" id="carousel-track">
-        <div class="carousel-slide">
-          <img src="./portrait.jpg" alt="Portrait of Charles C. Trowbridge" />
-          <div class="carousel-caption">Portrait of Charles C. Trowbridge — this painting hangs in the hallway of the house to this day</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./trowbridge-daguerreotype.jpg" alt="Daguerreotype of Charles C. Trowbridge" />
-          <div class="carousel-caption">Daguerreotype of Charles C. Trowbridge, c. 1850s</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./trowbridge-closeup.jpg" alt="Daguerreotype close-up" />
-          <div class="carousel-caption">Close-up daguerreotype — one of the earliest photographs of a Detroit mayor</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./daughter-daguerreotype.jpg" alt="Daguerreotype of Trowbridge child" />
-          <div class="carousel-caption">Daguerreotype of a Trowbridge child, c. 1850s</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./daguerreotype-pair.jpg" alt="Paired daguerreotypes" />
-          <div class="carousel-caption">Father and daughter — paired daguerreotypes from the Trowbridge family collection</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./family-daguerreotype.jpg" alt="Trowbridge family daguerreotype" />
-          <div class="carousel-caption">The Trowbridge family, daguerreotype in gilt frame</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./family-oval.jpg" alt="Trowbridge family locket" />
-          <div class="carousel-caption">Trowbridge family portrait in original locket case</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./inventory-signature.jpg" alt="Inventory book with Trowbridge signature" />
-          <div class="carousel-caption">Trowbridge's inventory book — signed in his own hand: "Charles C. Trowbridge"</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./ledger-open.jpg" alt="Trowbridge account ledger" />
-          <div class="carousel-caption">Original account ledger with entries dating to the 1820s</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./ledger-shelf.jpg" alt="Trowbridge ledger on shelf" />
-          <div class="carousel-caption">The same ledger, still kept at the house nearly 200 years later</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./account-books-spines.jpg" alt="Trowbridge account books" />
-          <div class="carousel-caption">Trowbridge's account book, personal ledger, and an 1846 Detroit city directory</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./detroit-directory.jpg" alt="1846 Directory of the City of Detroit" />
-          <div class="carousel-caption">Directory of the City of Detroit, 1846 — signed "C.C. Trowbridge" on the flyleaf</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./newspaper-1859.jpg" alt="1859 Lansing State Republican" />
-          <div class="carousel-caption">Lansing State Republican, October 25, 1859 — bearing Trowbridge's name in print</div>
-        </div>
-        <div class="carousel-slide">
-          <img src="./historic-plaque.jpg" alt="National Register plaque" />
-          <div class="carousel-caption">National Register of Historic Places plaque — placed by the Daughters of the American Revolution, October 1979</div>
-        </div>
-      </div>
-      <button class="carousel-btn carousel-prev" id="carousel-prev">&#8249;</button>
-      <button class="carousel-btn carousel-next" id="carousel-next">&#8250;</button>
-      <div class="carousel-dots" id="carousel-dots"></div>
-    </div>
-  </div>
-</section>
 
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer section-parchment" style="background: var(--cream); padding-top: 3rem;">
@@ -1873,6 +1878,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) {
       d.classList.toggle('active', i === currentSlide);
     });
+    document.getElementById('carousel-counter').textContent = (currentSlide + 1) + ' / ' + slides.length;
   }
 
   document.getElementById('carousel-prev').addEventListener('click', function() { goToSlide(currentSlide - 1); });
