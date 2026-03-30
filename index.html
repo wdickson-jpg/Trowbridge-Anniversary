@@ -355,30 +355,7 @@ section { position: relative; }
   margin: 0 auto 3rem;
   text-align: center;
   position: relative;
-  padding: 2rem 0 3rem;
-}
-
-.bio-quote::before {
-  content: '\201C';
-  font-family: 'Playfair Display', serif;
-  font-size: 8rem;
-  position: absolute;
-  top: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(200,164,78,0.2);
-  line-height: 1;
-}
-
-.bio-quote::after {
-  content: '\201D';
-  font-family: 'Playfair Display', serif;
-  font-size: 8rem;
-  position: absolute;
-  bottom: -1.5rem;
-  right: 0;
-  color: rgba(200,164,78,0.2);
-  line-height: 1;
+  padding: 1rem 0;
 }
 
 .bio-stats {
@@ -1136,6 +1113,15 @@ section { position: relative; }
     gap: 2rem;
   }
 
+  .bio [style*="grid-template-columns: 1fr 300px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bio [style*="grid-template-columns: 1fr 300px"] img {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
   .stewardship [style*="grid-template-columns: 1fr 1fr"] {
     grid-template-columns: 1fr !important;
   }
@@ -1377,16 +1363,23 @@ section { position: relative; }
   <div class="container">
     <div class="reveal">
       <blockquote class="bio-quote">
-        At the time of its construction, the Trowbridge House was considered the finest frame house in the Michigan Territory.
+        <span style="font-size: 3em; line-height: 0; vertical-align: -0.15em; color: rgba(200,164,78,0.35); margin-right: 0.05em;">&ldquo;</span>At the time of its construction, the Trowbridge House was considered the finest frame house in the Michigan Territory.<span style="font-size: 3em; line-height: 0; vertical-align: -0.15em; color: rgba(200,164,78,0.35); margin-left: 0.05em;">&rdquo;</span>
       </blockquote>
     </div>
 
     <div class="reveal" style="transition-delay: 0.1s;">
       <div class="section-label">The Man Who Built It</div>
       <h2 class="section-heading" style="color: #fff;">Charles Christopher Trowbridge</h2>
-      <p class="body-text">
-        Trowbridge was born in 1800 in Albany, New York. He arrived in Detroit at nineteen and spent the next six decades as a U.S. Deputy Marshal, Great Lakes explorer, Native American interpreter, bank president, railroad executive, alderman, mayor during the 1834 cholera epidemic, gubernatorial candidate, and University of Michigan regent. In 1826 he married Catherine Sibley, daughter of Detroit's first mayor, and built this house on farmland outside the city walls. He lived here for 57 years. They are buried at Elmwood Cemetery.
-      </p>
+      <div style="display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start;">
+        <p class="body-text">
+          Trowbridge was born in 1800 in Albany, New York. He arrived in Detroit at nineteen and spent the next six decades as a U.S. Deputy Marshal, Great Lakes explorer, Native American interpreter, bank president, railroad executive, alderman, mayor during the 1834 cholera epidemic, gubernatorial candidate, and University of Michigan regent. In 1826 he married Catherine Sibley, daughter of Detroit's first mayor, and built this house on farmland outside the city walls. He lived here for 57 years. They are buried at Elmwood Cemetery.
+        </p>
+        <div style="position: relative;">
+          <div style="position: absolute; inset: 8px; border: 1px solid var(--gold); pointer-events: none; z-index: 1;"></div>
+          <img src="./portrait.jpg" alt="Portrait of Charles C. Trowbridge" style="width: 100%; display: block; filter: brightness(0.95);" />
+          <p style="font-family: 'Cormorant Garamond', serif; font-size: 0.8rem; font-style: italic; color: rgba(255,255,255,0.4); margin-top: 0.5rem; text-align: center;">Portrait of Charles C. Trowbridge</p>
+        </div>
+      </div>
     </div>
 
     <div class="bio-stats reveal" style="transition-delay: 0.2s;">
