@@ -861,6 +861,111 @@ section { position: relative; }
   font-style: italic;
 }
 
+/* ========== CAROUSEL ========== */
+.carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.carousel-slide img {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border: 2px solid rgba(200,164,78,0.2);
+  background: rgba(0,0,0,0.3);
+}
+
+.carousel-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--gold-light);
+  text-align: center;
+  margin-top: 1.2rem;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: rgba(200,164,78,0.15);
+  border: 1px solid rgba(200,164,78,0.3);
+  color: var(--gold);
+  font-size: 2.5rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  line-height: 1;
+  padding-bottom: 3px;
+}
+
+.carousel-btn:hover {
+  background: rgba(200,164,78,0.3);
+  border-color: var(--gold);
+}
+
+.carousel-prev { left: -60px; }
+.carousel-next { right: -60px; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(200,164,78,0.2);
+  border: 1px solid rgba(200,164,78,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .carousel-prev { left: 0.5rem; }
+  .carousel-next { right: 0.5rem; }
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    background: rgba(10,15,26,0.7);
+  }
+  .carousel-slide img {
+    max-height: 50vh;
+  }
+}
+
 /* ========== LIGHTBOX ========== */
 .lightbox {
   display: none;
@@ -1317,12 +1422,12 @@ section { position: relative; }
           <div class="tl-title">The Great Fire of Detroit</div>
           <div class="tl-desc">Nearly the entire city burns to the ground. Judge Augustus Woodward begins the replanning of Detroit with wide boulevards and a new vision.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Woodward's bold plan for Detroit</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1818 -->
       <div class="timeline-item detroit-event reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">A Jefferson Ave. residence, c. 1900</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1818</div>
@@ -1339,12 +1444,12 @@ section { position: relative; }
           <div class="tl-title">Trowbridge Arrives in Detroit</div>
           <div class="tl-desc">Nineteen-year-old Charles C. Trowbridge arrives in Detroit to work under Major Thomas Rowland as Deputy U.S. Marshal. The population of Detroit is roughly 1,500 people.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Gov. Lewis Cass, Trowbridge's mentor</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1820 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">Early Woodward Avenue streetscape</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1820</div>
@@ -1361,12 +1466,12 @@ section { position: relative; }
           <div class="tl-title">President, Bank of Michigan</div>
           <div class="tl-desc">Trowbridge is appointed cashier (and later president) of the Bank of Michigan, one of the territory's most important financial institutions. He purchases the farmland that will become the site of his famous house.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Campus Martius — Detroit's heart</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1826 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28763/sidebar_slim_Trowbridge-House_Before-scale-back_unknown_Burton-Edit.jpg" alt="Original Trowbridge House" /><div class="tl-image-caption">The original five-bay house</div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1826</div>
@@ -1383,12 +1488,12 @@ section { position: relative; }
           <div class="tl-title">Mayor During Cholera Epidemic</div>
           <div class="tl-desc">After serving as alderman in 1833, Trowbridge is elected mayor of Detroit and serves through a devastating cholera epidemic before resigning. He runs for governor in 1837 as the Whig candidate, narrowly losing to Stevens T. Mason.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Looking up Woodward Avenue</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1837 -->
       <div class="timeline-item detroit-event reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">Detroit in the statehood era</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1837</div>
@@ -1405,12 +1510,12 @@ section { position: relative; }
           <div class="tl-title">Brick Addition</div>
           <div class="tl-desc">Trowbridge adds a brick addition to the rear of the house and builds a brick carriage house behind the property. The carriage house, which still stands today, features Queen Anne Victorian details including a large front-facing gable. He continues to lead the Michigan State Bank and takes the helm of the Detroit &amp; Milwaukee Railway.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Detroit's bustling riverfront</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1883 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="Trowbridge House" /><div class="tl-image-caption">1380 East Jefferson Avenue</div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1883</div>
@@ -1427,12 +1532,12 @@ section { position: relative; }
           <div class="tl-title">House Downsized & Updated</div>
           <div class="tl-desc">The eastern two bays are removed, reducing the house from five bays to three. Victorian elements are added, including the distinctive front bay window with fish-scale shingled pediment. An apartment house is built on the removed section's site.</div>
         </div>
-        <div class="timeline-right"><img class="tl-image" src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="Victorian elements added" /><div class="tl-image-caption">The Victorian facade today</div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1896 -->
       <div class="timeline-item detroit-event reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">Griswold Street, turn of the century</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag city">City of Detroit</span>
           <div class="tl-year">1896</div>
@@ -1449,12 +1554,12 @@ section { position: relative; }
           <div class="tl-title">Ford Motor Company Founded</div>
           <div class="tl-desc">Henry Ford incorporates the Ford Motor Company. Detroit begins its transformation into the Motor City, attracting workers and capital from around the world.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Belle Isle — Detroit's island park</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1929 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">Hotel Cadillac — the Roaring 20s</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1929</div>
@@ -1471,12 +1576,12 @@ section { position: relative; }
           <div class="tl-title">Converted to Rooming House</div>
           <div class="tl-desc">During the Great Depression, the Trowbridge family converts the house to a rooming house.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Fort Street in the Depression era</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1942 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">Detroit waterfront, mid-century</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1942</div>
@@ -1493,12 +1598,12 @@ section { position: relative; }
           <div class="tl-title">Michigan State Historic Site</div>
           <div class="tl-desc">The Trowbridge House is designated a Michigan State Historic Site, recognizing its importance as Detroit's oldest surviving building.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Downtown Detroit in the modern era</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1976 -->
       <div class="timeline-item reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">Grand Circus — Woodward's vision endures</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag house">Trowbridge</span>
           <div class="tl-year">1976</div>
@@ -1515,12 +1620,12 @@ section { position: relative; }
           <div class="tl-title">Renaissance Center Opens</div>
           <div class="tl-desc">The Renaissance Center opens just blocks from the Trowbridge House — a bold statement of faith in Detroit's future along the riverfront corridor.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Detroit's enduring riverfront</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 1981 -->
       <div class="timeline-item stewardship-event reveal">
-        <div class="timeline-left"><div class="tl-era-card"><div class="tl-era-label">A new chapter begins on Jefferson</div></div></div>
+        <div class="timeline-left"></div>
         <div class="timeline-right">
           <span class="tl-tag stewardship">&#9670; Stewardship</span>
           <div class="tl-year">1981</div>
@@ -1537,7 +1642,7 @@ section { position: relative; }
           <div class="tl-title">Bosquett Building Acquired</div>
           <div class="tl-desc">Needing more space, Dickson purchases the neighboring 1899 Bosquett Building and connects the two structures via a second-floor hallway, expanding the campus while preserving the Trowbridge House's character.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">Wayne County Building — Detroit endures</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
       <!-- 2026 -->
@@ -1548,7 +1653,7 @@ section { position: relative; }
           <div class="tl-title" style="font-size: 1.25rem;">&#9733; Bicentennial</div>
           <div class="tl-desc">The Trowbridge House celebrates 200 years — still standing, still home to entrepreneurs, still the oldest building in Detroit. From a frontier home on farmland to the headquarters of multiple thriving businesses, the spirit of enterprise endures.</div>
         </div>
-        <div class="timeline-right"><div class="tl-era-card"><div class="tl-era-label">200 years — still standing</div></div></div>
+        <div class="timeline-right"></div>
       </div>
 
     </div>
@@ -1631,42 +1736,76 @@ section { position: relative; }
 
 
 <!-- ==================== GALLERY ==================== -->
-<section class="gallery-section section-dark">
+<section class="gallery-section section-dark" style="padding: 6rem 0;">
   <div class="container">
     <div class="reveal">
-      <div class="section-label">Gallery</div>
-      <h2 class="section-heading" style="color:#fff;">Through the Years</h2>
+      <div class="section-label">From the Collection</div>
+      <h2 class="section-heading" style="color:#fff;">Artifacts &amp; Heirlooms</h2>
+      <p class="body-text" style="margin-bottom: 2rem;">Original photographs, ledgers, and personal effects from the Trowbridge House — many still kept on site at 1380 East Jefferson Avenue.</p>
     </div>
 
-    <div class="gallery-mosaic reveal">
-      <div class="gallery-item">
-        <img src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28763/sidebar_slim_Trowbridge-House_Before-scale-back_unknown_Burton-Edit.jpg" alt="The original five-bay Trowbridge House before 1889 renovation" />
-        <div class="gallery-overlay"><span>The original five-bay house before 1889</span></div>
+    <div class="carousel reveal" id="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide">
+          <img src="images/portrait.jpg" alt="Portrait of Charles C. Trowbridge" />
+          <div class="carousel-caption">Portrait of Charles C. Trowbridge — this painting hangs in the hallway of the house to this day</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/trowbridge-daguerreotype.jpg" alt="Daguerreotype of Charles C. Trowbridge" />
+          <div class="carousel-caption">Daguerreotype of Charles C. Trowbridge, c. 1850s</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/trowbridge-closeup.jpg" alt="Daguerreotype close-up" />
+          <div class="carousel-caption">Close-up daguerreotype — one of the earliest photographs of a Detroit mayor</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/daughter-daguerreotype.jpg" alt="Daguerreotype of Trowbridge child" />
+          <div class="carousel-caption">Daguerreotype of a Trowbridge child, c. 1850s</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/daguerreotype-pair.jpg" alt="Paired daguerreotypes" />
+          <div class="carousel-caption">Father and daughter — paired daguerreotypes from the Trowbridge family collection</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/family-daguerreotype.jpg" alt="Trowbridge family daguerreotype" />
+          <div class="carousel-caption">The Trowbridge family, daguerreotype in gilt frame</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/family-oval.jpg" alt="Trowbridge family locket" />
+          <div class="carousel-caption">Trowbridge family portrait in original locket case</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/inventory-signature.jpg" alt="Inventory book with Trowbridge signature" />
+          <div class="carousel-caption">Trowbridge's inventory book — signed in his own hand: "Charles C. Trowbridge"</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/ledger-open.jpg" alt="Trowbridge account ledger" />
+          <div class="carousel-caption">Original account ledger with entries dating to the 1820s</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/ledger-shelf.jpg" alt="Trowbridge ledger on shelf" />
+          <div class="carousel-caption">The same ledger, still kept at the house nearly 200 years later</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/account-books-spines.jpg" alt="Trowbridge account books" />
+          <div class="carousel-caption">Trowbridge's account book, personal ledger, and an 1846 Detroit city directory</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/detroit-directory.jpg" alt="1846 Directory of the City of Detroit" />
+          <div class="carousel-caption">Directory of the City of Detroit, 1846 — signed "C.C. Trowbridge" on the flyleaf</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/newspaper-1859.jpg" alt="1859 Lansing State Republican" />
+          <div class="carousel-caption">Lansing State Republican, October 25, 1859 — bearing Trowbridge's name in print</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/historic-plaque.jpg" alt="National Register plaque" />
+          <div class="carousel-caption">National Register of Historic Places plaque — placed by the Daughters of the American Revolution, October 1979</div>
+        </div>
       </div>
-      <div class="gallery-item">
-        <img src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="Trowbridge House exterior" />
-        <div class="gallery-overlay"><span>The house as it stands today</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="Trowbridge House exterior detail" />
-        <div class="gallery-overlay"><span>Federal meets Victorian — a harmonious blend</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28763/sidebar_slim_Trowbridge-House_Before-scale-back_unknown_Burton-Edit.jpg" alt="Historic photograph of the Trowbridge House" />
-        <div class="gallery-overlay"><span>Historic photograph, Burton Historical Collection</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="1380 East Jefferson Avenue" />
-        <div class="gallery-overlay"><span>1380 East Jefferson Avenue</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://storage.googleapis.com/historic-detroit-prod/uploads/photo/photo/28759/sidebar_slim_H4080047.jpg" alt="Victorian bay window detail" />
-        <div class="gallery-overlay"><span>The Victorian bay window, added c. 1889</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://storage.googleapis.com/historic-detroit-prod/uploads/building/photo/4189/sidebar_H4080039.jpg" alt="Trowbridge House from the street" />
-        <div class="gallery-overlay"><span>Detroit's oldest building — still standing</span></div>
-      </div>
+      <button class="carousel-btn carousel-prev" id="carousel-prev">&#8249;</button>
+      <button class="carousel-btn carousel-next" id="carousel-next">&#8250;</button>
+      <div class="carousel-dots" id="carousel-dots"></div>
     </div>
   </div>
 </section>
@@ -1714,6 +1853,43 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -40px 0px'
   });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Carousel
+  const track = document.getElementById('carousel-track');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const dotsContainer = document.getElementById('carousel-dots');
+  let currentSlide = 0;
+
+  slides.forEach(function(_, i) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function() { goToSlide(i); });
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(n) {
+    currentSlide = ((n % slides.length) + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    dotsContainer.querySelectorAll('.carousel-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  document.getElementById('carousel-prev').addEventListener('click', function() { goToSlide(currentSlide - 1); });
+  document.getElementById('carousel-next').addEventListener('click', function() { goToSlide(currentSlide + 1); });
+
+  // Touch swipe
+  var touchStartX = 0;
+  var carouselEl = document.getElementById('carousel');
+  carouselEl.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
+  carouselEl.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goToSlide(currentSlide + 1);
+      else goToSlide(currentSlide - 1);
+    }
+  });
+
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');
