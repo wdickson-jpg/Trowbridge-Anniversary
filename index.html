@@ -1150,9 +1150,8 @@ section { position: relative; }
     padding: 0;
     order: unset;
   }
-  .timeline-left { display: none; }
-  .timeline-item:nth-child(even) .timeline-left { display: block; }
-  .timeline-item:nth-child(even) .timeline-right { display: none; }
+  .timeline-left:empty { display: none; }
+  .timeline-right:empty { display: none; }
 
   .gallery-mosaic {
     grid-template-columns: 1fr 1fr;
